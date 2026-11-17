@@ -1,0 +1,205 @@
+body {
+    margin: 0;
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    color: white;
+}
+
+#game-container {
+    position: relative;
+    border: 4px solid #333;
+    border-radius: 12px;
+    background: #1a1a1a;
+}
+
+canvas {
+    display: block;
+    border-radius: 8px;
+    transition: filter 0.3s ease;
+}
+
+.game-blur {
+    filter: blur(5px) brightness(0.5);
+}
+
+#score {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    font-weight: bold;
+    font-family: monospace;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 5px #00d2ff;
+    z-index: 30;
+    pointer-events: none;
+}
+
+#life-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    gap: 6px;
+    z-index: 20;
+}
+
+.life-box {
+    width: 25px;
+    height: 10px;
+    background: #00d2ff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
+    transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.life-lost {
+    opacity: 0.15;
+    background: #444;
+    box-shadow: none;
+}
+
+#pause-btn-ui {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 25;
+}
+
+#nitro-container {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+#nitro-status {
+    font-size: 12px;
+    font-weight: bold;
+    color: #00f2ff;
+    text-shadow: 1px 1px 3px black;
+    letter-spacing: 1px;
+}
+
+#speedo-cluster {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 12px;
+    border-radius: 4px;
+    border-right: 3px solid #00d2ff;
+    text-align: center;
+}
+
+#speed-val { font-size: 22px; font-weight: bold; font-family: monospace; }
+.speedo-label, .speedo-unit { font-size: 8px; color: #aaa; text-transform: uppercase; }
+
+#pause-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+#pause-text {
+    font-size: 40px;
+    font-weight: bold;
+    color: #00d2ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+
+#game-over-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 150;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#game-over-text-center {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff4757;
+    text-shadow: 0 0 15px rgba(255, 71, 87, 0.5);
+}
+
+#intro { text-align: center; background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; }
+
+button {
+    padding: 10px 30px;
+    background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#pause-overlay .active-btn, #game-over-overlay .active-btn {
+    border-color: #00d2ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+}
+
+#intro, #game-container {
+    width: 300px;
+    height: 500px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    margin: 20px auto;
+}
+
+.menu-btn {
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: #333;
+}
+
+.active-btn {
+    background: #00d2ff !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+}
+
+button:hover { transform: scale(1.05); }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Highway Racer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Intro Menu -->
+<div id="intro" style="width: 300px; height: 500px; margin: auto; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #111; border: 2px solid #333; position: relative;">
+    <h1 style="color: #00d2ff; font-size: 24px; margin-bottom: 5px;">2D CAR RACING</h1>
+    <p style="color: #555; font-size: 10px; margin-bottom: 20px;">CHOOSE YOUR MODE</p>
+    
+    <div id="start-menu" style="display: flex; gap: 10px; margin-bottom: 30px;">
+        <button id="btn-two-way" class="menu-btn active-btn" onclick="startGame('two-way')">TWO WAY</button>
+        <button id="btn-one-way" class="menu-btn" onclick="startGame('one-way')" style="background: linear-gradient(135deg);">ONE WAY</button>
+    </div>
+
+    <!-- Controls Guide Table -->
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; width: 80%;">
+        <h3 style="color: #eee; font-size: 12px; border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">CONTROLS</h3>
+        <table style="width: 100%; color: #aaa; font-size: 11px; text-align: left;">
+            <tr><td><b>W / S</b></td><td>Speed Up / Down</td></tr>
+            <tr><td><b>A / D</b></td><td>Left / Right</td></tr>
+            <tr><td><b>SPACE</b></td><td>Select / Pause</td></tr>
+            <tr><td><b>Q</b></td><td>Nitro Boost</td></tr>
+        </table>
+    </div>
+    
+    <p style="color: #444; font-size: 9px; position: absolute; bottom: 20px;">Use <b>W/A/S/D</b> to Navigate & <b>SPACE</b> to Confirm</p>
+</div>
+    <div id="game-container" style="display: none;">
+        <canvas id="gameCanvas" width="300" height="500"></canvas>
+        <div id="score">0</div>
+        
+        <div id="life-container">
+            <div id="life1" class="life-box"></div>
+            <div id="life2" class="life-box"></div>
+            <div id="life3" class="life-box"></div>
+        </div>
+
+        <div id="pause-btn-ui" onclick="togglePause()">II</div>
+
+        <div id="nitro-container">
+            <span id="nitro-status">NITRO READY</span>
+        </div>
+
+        <div id="speedo-cluster">
+            <div class="speedo-label">SPEED</div>
+            <div id="speed-val">0</div>
+            <div class="speedo-unit">KM/H</div>
+        </div>
+
+        <!-- Pause Overlay -->
+        <div id="pause-overlay">
+            <div id="pause-text">PAUSED</div>
+            <button id="btn-resume" class="menu-btn" onclick="togglePause()" style="margin-bottom: 10px; width: 180px;">RESUME</button>
+            <button id="btn-pause-menu" class="menu-btn" onclick="goToMainMenu()" style="background: #444; width: 180px; font-size: 12px;">MAIN MENU</button>
+        </div>
+
+        <!-- Game Over Overlay -->
+        <div id="game-over-overlay">
+            <div id="game-over-text-center">GAME OVER</div>
+            <div id="mode-display" style="font-size: 10px; color: #555; margin-bottom: 5px; text-transform: uppercase;"></div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; width: 100%; color: #aaa; font-size: 12px;">
+                <div style="border-right: 1px solid #333;">
+                    <p style="color: white; margin: 5px 0;">SCORE<br><b id="final-score-val" style="color: #00d2ff; font-size: 18px;">0</b></p>
+                    <p>HIGH SCORE<br><b id="high-score-val" style="color: #eee;">0</b></p>
+                </div>
+                <div>
+                    <p style="color: white; margin: 5px 0;">TOP SPEED<br><b id="max-speed-val" style="color: #2ecc71; font-size: 18px;">0</b></p>
+                    <p>ALL-TIME TOP<br><b id="all-time-speed-val" style="color: #eee;">0</b></p>
+                </div>
+            </div>
+
+            <button id="btn-restart" class="menu-btn" onclick="initGame()" style="margin-bottom: 8px; width: 80%;">RESTART</button>
+            <button id="btn-over-menu" class="menu-btn" onclick="goToMainMenu()" style="background: #444; font-size: 12px; width: 80%;">MAIN MENU</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
